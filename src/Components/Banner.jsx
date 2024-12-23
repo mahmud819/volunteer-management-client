@@ -1,26 +1,68 @@
 import React from "react";
-import { easeOut, motion } from "motion/react"
+import { easeOut, motion } from "motion/react";
 
 const Banner = () => {
   return (
-    <div className="hero bg-base-200 min-h-96">
-      <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="flex-1">
+    <div>
+      <div className="carousel w-full">
+        <div id="slide1" className="carousel-item relative w-full">
           <img
-            src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
-            className="max-w-sm rounded-lg shadow-2xl"
+            src="https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.webp"
+            className="w-full"
           />
+          <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+            <a href="#slide4" className="btn btn-circle">
+              ❮
+            </a>
+            <a href="#slide2" className="btn btn-circle">
+              ❯
+            </a>
+          </div>
         </div>
-        <div className="flex-1">
-          <motion.h1 animate={{x:50}} transition={{duration:2,delay:2,ease:easeOut,repeat:Infinity}} className="text-5xl font-bold">Hire a volunteer!</motion.h1>
-          <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
-          <button className="btn btn-primary">Get Started</button>
+        <div id="slide2" className="carousel-item relative w-full">
+          <img
+            src="https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.webp"
+            className="w-full"
+          />
+          <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+            <a href="#slide1" className="btn btn-circle">
+              ❮
+            </a>
+            <a href="#slide3" className="btn btn-circle">
+              ❯
+            </a>
+          </div>
+        </div>
+        <div id="slide3" className="carousel-item relative w-full">
+          <img
+            src="https://img.daisyui.com/images/stock/photo-1414694762283-acccc27bca85.webp"
+            className="w-full"
+          />
+          <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+            <a href="#slide2" className="btn btn-circle">
+              ❮
+            </a>
+            <a href="#slide4" className="btn btn-circle">
+              ❯
+            </a>
+          </div>
+        </div>
+        <div id="slide4" className="carousel-item relative w-full">
+          <img
+            src="https://img.daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.webp"
+            className="w-full"
+          />
+          <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+            <a href="#slide3" className="btn btn-circle">
+              ❮
+            </a>
+            <a href="#slide1" className="btn btn-circle">
+              ❯
+            </a>
+          </div>
         </div>
       </div>
+      
     </div>
   );
 };
