@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import signInLottie from '../../src/assets/lottie/signIn.json/signInAnimation.json'
 import axios from "axios";
@@ -11,6 +11,7 @@ const Login = () => {
   const { loginUser } = useContext(AuthContext);
 
   const navigate = useNavigate();
+  const location = useLocation();
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -40,11 +41,9 @@ const Login = () => {
         .then(res=>{
           console.log(res.data);
         })
-        // axios.post('http://localhost:5000/jwt',user)
-        // .then(data=>{
-        //   console.log(data);
-        // })
-        navigate("/");
+        
+        e.target.reset();
+        navigate(location?.state?location.state:'/')
       })
       .catch((error) => {
         console.log(error);

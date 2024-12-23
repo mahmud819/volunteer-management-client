@@ -71,7 +71,7 @@ const Navbar = () => {
       });
   };
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-red-950">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -100,7 +100,7 @@ const Navbar = () => {
             <li>
                   <NavLink to='/allVolunteer' className='active btn'>All Volunteer</NavLink>
             </li>
-            <li>
+            {user&&<li>
               <NavLink to= '/myProfile' className='active btn'>My Profile</NavLink>
               <ul className="p-2">
                 <li>
@@ -110,7 +110,7 @@ const Navbar = () => {
                   <NavLink to='/manageMyPost' className='active btn'>Manage My Post</NavLink>
                 </li>
               </ul>
-            </li>
+            </li>}
             
           </ul>
         </div>
@@ -124,7 +124,7 @@ const Navbar = () => {
           <li className="ml-2">
             <NavLink to='/allVolunteer' className='active btn'>All Volunteer</NavLink>
           </li>
-          <li className="ml-2">
+          {user&&<li className="ml-2">
             <details>
              <summary className='active btn pt-4'><NavLink to='/myProfile'>My Profile</NavLink></summary>
               <ul className="p-2 z-10">
@@ -136,7 +136,7 @@ const Navbar = () => {
                 </li>
               </ul>
             </details>
-          </li>
+          </li>}
           
         </ul>
       </div>
