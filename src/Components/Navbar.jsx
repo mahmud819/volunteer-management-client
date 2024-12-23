@@ -107,7 +107,7 @@ const Navbar = () => {
                   <NavLink to='/addVolunteer' className='active btn'>Add Volunteer</NavLink>
                 </li>
                 <li>
-                  <NavLink className='active btn'>Manage My Post</NavLink>
+                  <NavLink to='/manageMyPost' className='active btn'>Manage My Post</NavLink>
                 </li>
               </ul>
             </li>
@@ -132,7 +132,7 @@ const Navbar = () => {
                   <NavLink to='/addVolunteer' className='active btn'>Add Volunteer</NavLink>
                 </li>
                 <li className="">
-                  <NavLink className='active btn'>Manage My Post</NavLink>
+                  <NavLink to = '/manageMyPost' className='active btn'>Manage My Post</NavLink>
                 </li>
               </ul>
             </details>

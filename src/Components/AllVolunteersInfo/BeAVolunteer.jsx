@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import useAxiosHooks from '../../Hooks/useAxiosHooks';
+import Swal from 'sweetalert2';
 
 const BeAVolunteer = () => {
 
@@ -28,9 +29,14 @@ const BeAVolunteer = () => {
       const status = e.target.status.value;
       const applydId = data?._id;
       const requestedData = {title,description,deadline,email,thumbnail,applydId,volunteerNumber,category,name,volunteerName,volunteerEmail,status,suggestion}
-      axiosHook.post('/beAVolunteer')
+      axiosHook.post('/beAVolunteer',requestedData)
       .then(res=>{
         console.log(res)
+        Swal.fire({
+                          title: "Well Done!",
+                          text: "Apply as a Volunteer successfull!",
+                          icon: "success"
+                        });
       })
       .catch(error=>{
         console.log(error,error.message);
@@ -200,7 +206,7 @@ const BeAVolunteer = () => {
           />
         </div>
         <div className="">
-          <button className="btn mx-auto">Request</button>
+          <button className="btn mx-auto">Request to Join As a Volunteer</button>
         </div>
       </form>
     </div>

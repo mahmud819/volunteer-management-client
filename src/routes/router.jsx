@@ -8,11 +8,14 @@ import Footer from "../Pages/Footer";
 import Resigter from "../Components/Resigter";
 import Login from "../Components/Login";
 import PrivateRouter from "./PrivateRouter";
-import MyProfile from "../Components/MyProfile";
+import ManageMyPost from "../MyProfile/ManageMyPost";
 import AddVolunteer from "../Components/AddVolunteer";
 import PostDetails from "../Components/AllVolunteersInfo/PostDetails";
 import AllVolunteer from "../Components/AllVolunteersInfo/AllVolunteer";
 import BeAVolunteer from "../Components/AllVolunteersInfo/BeAVolunteer";
+import MyVolunteerPost from "../MyProfile/MyVolunteerPost";
+import MyRequestPost from "../MyProfile/MyRequestPost";
+import MyProfile from "../MyProfile/MyProfile";
 
 
 
@@ -30,8 +33,27 @@ import BeAVolunteer from "../Components/AllVolunteersInfo/BeAVolunteer";
           element: <AllVolunteer></AllVolunteer>
         },
         {
-          path: '/myProfile',
-          element: <MyProfile></MyProfile>
+          path:'/myProfile',
+          element:<PrivateRouter><MyProfile></MyProfile></PrivateRouter>,
+          
+        },
+        {
+          path: '/addVolunteer',
+          element: <PrivateRouter><AddVolunteer></AddVolunteer></PrivateRouter>
+        },
+        {
+          path:'/manageMyPost',
+          element:<PrivateRouter><ManageMyPost></ManageMyPost></    PrivateRouter>,
+          children:[
+            {
+              path:'/manageMyPost/myVolunteerPost',
+              element:<PrivateRouter><MyVolunteerPost></MyVolunteerPost></PrivateRouter>
+            },
+            {
+              path:'/manageMyPost/myRequestPost',
+              element:<PrivateRouter><MyRequestPost></MyRequestPost></PrivateRouter>
+            }
+          ]
         },
         {
           path: '/postDetails/:_id',
@@ -59,11 +81,6 @@ import BeAVolunteer from "../Components/AllVolunteersInfo/BeAVolunteer";
             return singleData;
           },
         },
-        {
-          path: '/addVolunteer',
-          element: <PrivateRouter><AddVolunteer></AddVolunteer></PrivateRouter>
-        },
-        
         {
           path: '/register',
           element: <Resigter></Resigter>
