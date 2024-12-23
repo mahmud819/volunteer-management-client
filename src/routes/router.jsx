@@ -52,7 +52,8 @@ import UpdateMyPost from "../MyProfile/UpdateMyPost";
             },
             {
               path:'/manageMyPost/myRequestPost',
-              element:<PrivateRouter><MyRequestPost></MyRequestPost></PrivateRouter>
+              element:<PrivateRouter><MyRequestPost></MyRequestPost></PrivateRouter>,
+              loader:()=>fetch('http://localhost:5000/beAVolunteer')
             }
           ]
         },
