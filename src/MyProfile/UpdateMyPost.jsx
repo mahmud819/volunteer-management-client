@@ -1,54 +1,48 @@
 import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
-import { AuthContext } from '../../AuthProvider/AuthProvider';
-import useAxiosHooks from '../../Hooks/useAxiosHooks';
+import { AuthContext } from '../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
+import useAxiosHooks from '../Hooks/useAxiosHooks';
 
-const BeAVolunteer = () => {
-
-    const {user} = useContext(AuthContext);
-    const data = useLoaderData();
+const UpdateMyPost = () => {
+    const data=useLoaderData();
     const axiosHook = useAxiosHooks();
-    // console.log(data,user.email,user.displayName);
-
-    const handleBeAVolunteer =e=>{
-      e.preventDefault();
-
-     
-      const name = e.target.name.value;
-      const volunteerName = e.target.volunteerName.value;
-      const email = e.target.email.value;
-      const volunteerEmail = e.target.volunteerEmail.value;
-      const thumbnail = e.target.thumbnail.value
-      const title = e.target.title.value;
-      const description = e.target.description.value;
-      const volunteerNumber = e.target.volunteerNumber.value;
-      const deadline = e.target.deadline.value;
-      const category = e.target.category.value;
-      const suggestion = e.target.suggestion.value;
-      const status = e.target.status.value;
-      const applydId = data?._id;
-      const requestedData = {title,description,deadline,email,thumbnail,applydId,volunteerNumber,category,name,volunteerName,volunteerEmail,status,suggestion}
-      axiosHook.post('/beAVolunteer',requestedData)
-      .then(res=>{
-        console.log(res)
-        Swal.fire({
-                          title: "Well Done!",
-                          text: "Apply as a Volunteer successfull!",
-                          icon: "success"
-                        });
-      })
-      .catch(error=>{
-        console.log(error,error.message);
-      })
-      // console.log(requestedData);
-    }
+    const {user} = useContext(AuthContext);
+    console.log(data); 
     const {title,description,deadline,email,thumbnail,_id,volunteerNumber,category,name} = data;
+    const handleUpdatePost =e=>{
+          e.preventDefault();
     
+         
+          const name = e.target.name.value;
+          const volunteerName = e.target.volunteerName.value;
+          const email = e.target.email.value;
+          const volunteerEmail = e.target.volunteerEmail.value;
+          const thumbnail = e.target.thumbnail.value
+          const title = e.target.title.value;
+          const description = e.target.description.value;
+          const volunteerNumber = e.target.volunteerNumber.value;
+          const deadline = e.target.deadline.value;
+          const category = e.target.category.value;
+          const updatedData = {title,description,deadline,email,thumbnail,category,name,volunteerName}
+          axiosHook.put(`/addVolunteers/${_id}`,updatedData)
+          .then(res=>{
+            console.log(res)
+            Swal.fire({
+                        title: "Well Done!",
+                        text: "Post Update is successfull!",
+                        icon: "success"
+                            });
+          })
+          .catch(error=>{
+            console.log(error,error.message);
+          })
+          
+        }
     return (
     <div>
       <h1 className="text-4xl font-bold text-center py-2">Apply As A Volunteer</h1>
-      <form onSubmit={handleBeAVolunteer} className="w-4/5 mx-auto mt-6 rounded-lg bg-gray-300 p-4 grid grid-cols-1 gap-4 lg:grid-cols-2 ">
+      <form onSubmit={handleUpdatePost} className="w-4/5 mx-auto mt-6 rounded-lg bg-gray-300 p-4 grid grid-cols-1 gap-4 lg:grid-cols-2 ">
         <div className="w-full form-control">
           <label className="label">
             <span className="label-text">Organizer Name</span>
@@ -59,7 +53,6 @@ const BeAVolunteer = () => {
             className="input input-bordered"
             defaultValue={`${name}`}
             required
-            readOnly
           />
         </div>
         <div className="w-full form-control">
@@ -72,7 +65,6 @@ const BeAVolunteer = () => {
             className="input input-bordered"
             defaultValue={`${email}`}
             required
-            readOnly
           />
         </div>
         <div className="w-full form-control">
@@ -85,7 +77,6 @@ const BeAVolunteer = () => {
             className="input input-bordered"
             defaultValue={`${thumbnail}`}
             required
-            readOnly
           />
         </div>
         <div className="w-full form-control">
@@ -98,7 +89,6 @@ const BeAVolunteer = () => {
             className="input input-bordered"
             defaultValue={`${title}`}
             required
-            readOnly
           />
         </div>
         <div className="w-full form-control">
@@ -111,7 +101,6 @@ const BeAVolunteer = () => {
             className="input input-bordered"
             defaultValue={`${description}`}
             required
-            readOnly
           />
         </div>
         <div className="w-full form-control">
@@ -124,7 +113,6 @@ const BeAVolunteer = () => {
             className="input input-bordered"
             defaultValue={`${volunteerNumber}`}
             required
-            readOnly
           />
         </div>
         <div className="w-full form-control">
@@ -136,7 +124,6 @@ const BeAVolunteer = () => {
             placeholder="Deadline"
             className="input input-bordered"
             defaultValue={`${deadline}`}
-            readOnly
             required
           />
         </div>
@@ -164,7 +151,6 @@ const BeAVolunteer = () => {
             placeholder={`${user?.displayName}`}
             className="input input-bordered"
             defaultValue={`${user?.displayName}`}
-            
             readOnly
             
           />
@@ -182,35 +168,12 @@ const BeAVolunteer = () => {
             readOnly
           />
         </div>
-        <div className="w-full form-control">
-          <label className="label">
-            <span className="label-text">Suggestion</span>
-          </label>
-          <input name='suggestion'
-            type="text"
-            placeholder='Give your Opinion/Sugestion'
-            className="input input-bordered"
-            required
-          />
-        </div>
-        <div className="w-full form-control">
-          <label className="label">
-            <span className="label-text">Status</span>
-          </label>
-          <input name='status'
-            type="text"  
-            className="input input-bordered"
-            defaultValue='Requested'
-            required
-            readOnly
-          />
-        </div>
         <div className="">
-          <button className="btn mx-auto">Request to Join As a Volunteer</button>
+          <button className="btn mx-auto">Update Post</button>
         </div>
       </form>
     </div>
     );
 };
 
-export default BeAVolunteer;
+export default UpdateMyPost;

@@ -11,7 +11,7 @@ const useAllVolunteer = () => {
     console.log(volunteers);
     useEffect(()=>{
         setLoading(true);
-        axiosHook('/addVolunteers')
+        axiosHook.get('/addVolunteers')
         .then(res=>{
             // console.log(res)
             setVolunteers(res.data);

@@ -16,6 +16,7 @@ import BeAVolunteer from "../Components/AllVolunteersInfo/BeAVolunteer";
 import MyVolunteerPost from "../MyProfile/MyVolunteerPost";
 import MyRequestPost from "../MyProfile/MyRequestPost";
 import MyProfile from "../MyProfile/MyProfile";
+import UpdateMyPost from "../MyProfile/UpdateMyPost";
 
 
 
@@ -55,6 +56,13 @@ import MyProfile from "../MyProfile/MyProfile";
             }
           ]
         },
+        {
+          path: '/updateMyPost/:id',
+          element: <PrivateRouter><UpdateMyPost></UpdateMyPost></PrivateRouter>,
+          loader: ({ params }) =>
+            fetch(`http://localhost:5000/addVolunteers/${params.id}`),
+        },
+        
         {
           path: '/postDetails/:_id',
           element:<PrivateRouter>
