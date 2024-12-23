@@ -8,10 +8,11 @@ import Footer from "../Pages/Footer";
 import Resigter from "../Components/Resigter";
 import Login from "../Components/Login";
 import PrivateRouter from "./PrivateRouter";
-import AllVolunteer from "../Components/AllVolunteer";
 import MyProfile from "../Components/MyProfile";
 import AddVolunteer from "../Components/AddVolunteer";
-import PostDetails from "../Components/PostDetails";
+import PostDetails from "../Components/AllVolunteersInfo/PostDetails";
+import AllVolunteer from "../Components/AllVolunteersInfo/AllVolunteer";
+import BeAVolunteer from "../Components/AllVolunteersInfo/BeAVolunteer";
 
 
 
@@ -33,10 +34,30 @@ import PostDetails from "../Components/PostDetails";
           element: <MyProfile></MyProfile>
         },
         {
-          path: '/postDetails',
+          path: '/postDetails/:_id',
           element:<PrivateRouter>
             <PostDetails></PostDetails>
-          </PrivateRouter> 
+          </PrivateRouter> ,
+          loader: async ({ params }) => {
+            const res = await fetch(
+              "http://localhost:5000/addVolunteers"
+            );
+            const data = await res.json();
+            const singleData = data.find((d) => d._id == params._id);
+            return singleData;
+          },
+        },
+        {
+          path: '/beAVolunteer/:_id',
+          element: <PrivateRouter><BeAVolunteer></BeAVolunteer></PrivateRouter>,
+          loader: async ({ params }) => {
+            const res = await fetch(
+              "http://localhost:5000/addVolunteers"
+            );
+            const data = await res.json();
+            const singleData = data.find((d) => d._id == params._id);
+            return singleData;
+          },
         },
         {
           path: '/addVolunteer',

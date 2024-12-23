@@ -31,7 +31,8 @@ const AuthProvider = ({children}) => {
         setUser,
         createUser,
         loginUser,
-        userLogOut
+        userLogOut,
+        setLoading
     }
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth,(currentUser)=>{
@@ -41,7 +42,7 @@ const AuthProvider = ({children}) => {
                 const user = {email : currentUser.email};
                 axios.post('http://localhost:5000/jwt',user,{withCredentials:true})
                 .then(res=>{
-                    console.log(res);
+                    // console.log(res);
                     setLoading(false);
                 })
             }
