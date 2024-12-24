@@ -6,10 +6,11 @@ import "../App.css";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { div } from "motion/react-client";
 import useAxiosHooks from "../Hooks/useAxiosHooks";
+import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
   const { user, userLogOut,setLoading } = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
   const axiosHook = useAxiosHooks();
   const [userInfo,setUserInfo] = useState([]);
   useEffect(()=>{
@@ -107,9 +108,14 @@ const userData = userInfo.find(data=>data?.email == user?.email);
         </ul>
       </div>
       <div className="navbar-end flex ">
-      <div className=" rounded-full w-10   bg-gray-300 mr-4">
+        {user&&<div className=" rounded-full w-10   bg-gray-300 mr-4">
+      <a data-tooltip-id="my-tooltip-styles"
+                    data-tooltip-content={userData?.name}>
            <img className="avator w-[100%] rounded-full " src={userData?.photo} alt="user photo" />
-      </div>
+           </a>
+           <Tooltip id="my-tooltip-styles" className="example" />
+      </div>}
+      
         {user?.email?<div>
       
           <NavLink onClick={handleLogOut} className="btn">Logout</NavLink>

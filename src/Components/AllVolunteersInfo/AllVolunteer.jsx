@@ -24,9 +24,19 @@ const AllVolunteer = () => {
           </svg>
         </label>
       </div>
-      <div className="flex flex-col justify-center items-center mt-4 ">
-        {volunteersData.map(data=><VolunteersCard key={data._id} data ={data}></VolunteersCard>)}
-      </div>
+      {volunteersData?.length == 0 ? (
+        <div className="flex justify-center items-center min-h-screen">
+          <h1 className="text-4xl font-bold text-center my-4">
+            No Post Added Yet
+          </h1>
+        </div>
+      ) : (
+        <div className="flex flex-col justify-center items-center mt-4 ">
+          {volunteersData.map((data) => (
+            <VolunteersCard key={data._id} data={data}></VolunteersCard>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

@@ -3,12 +3,13 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 import useAxiosHooks from "../Hooks/useAxiosHooks";
 import Swal from "sweetalert2";
 import { NavLink } from "react-router-dom";
+import { div } from "motion/react-client";
 
 const MyVolunteerPost = () => {
   const { user, setLoading } = useContext(AuthContext);
   const axiosHook = useAxiosHooks();
-  const [myPostData, setMyPostData] = useState([]);
-  console.log(myPostData);
+  const [myPostData, setMyPostData] = useState();
+  // console.log(myPostData?.length);
 
   useEffect(() => {
     setLoading(true);
@@ -29,7 +30,8 @@ const MyVolunteerPost = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosHook.delete(`/addVolunteers/${id}`)
+        axiosHook
+          .delete(`/addVolunteers/${id}`)
           .then((res) => {
             console.log(res.data);
             Swal.fire({
@@ -55,59 +57,64 @@ const MyVolunteerPost = () => {
         Volunteer Data Posted By Me
       </h1>
       <div>
-        <div className="overflow-x-auto">
-          <table className="table">
-            {/* head */}
-            <thead>
-              <tr className="text-lg font-bold text-black">
-                <th> Name</th>
-                <th>Add By</th>
-                <th> Type</th>
-                <th>Delete/Update</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {myPostData.map((data) => (
-                <tr>
-                  <td>
-                    <div className="flex items-center gap-3">
-                      <div className="avatar">
-                        <div className="mask mask-squircle h-12 w-12">
-                          <img
-                            src={data.thumbnail}
-                            alt="Avatar Tailwind CSS Component"
-                          />
+        {myPostData?.length == 0 ? (
+          <div className="flex justify-center items-center min-h-screen">
+            <h1 className="text-4xl font-bold text-center my-4">Data Not Found</h1>
+          </div>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="table">
+              {/* head */}
+              <thead>
+                <tr className="text-lg font-bold text-black">
+                  <th> Name</th>
+                  <th>Add By</th>
+                  <th> Type</th>
+                  <th>Delete/Update</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {myPostData?.map((data) => (
+                  <tr>
+                    <td>
+                      <div className="flex items-center gap-3">
+                        <div className="avatar">
+                          <div className="mask mask-squircle h-12 w-12">
+                            <img
+                              src={data.thumbnail}
+                              alt="Avatar Tailwind CSS Component"
+                            />
+                          </div>
+                        </div>
+                        <div>
+                          <div className="font-bold">{data.title} </div>
                         </div>
                       </div>
-                      <div>
-                        <div className="font-bold">{data.title} </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>{data.email}</td>
-                  <td>{data.category}</td>
-                  <th>
-                    <div className="flex">
-                      <button
-                        onClick={() => handlePostDelete(data._id)}
-                        className="btn btn-ghost btn-xs"
-                      >
-                        Delete
-                      </button>
-                      <NavLink to={`/updateMyPost/${data._id}`}>
-                        {" "}
-                        <button className="btn btn-ghost btn-xs ml-2 ">
-                          Update
+                    </td>
+                    <td>{data.email}</td>
+                    <td>{data.category}</td>
+                    <th>
+                      <div className="flex">
+                        <button
+                          onClick={() => handlePostDelete(data._id)}
+                          className="btn btn-ghost btn-xs"
+                        >
+                          Delete
                         </button>
-                      </NavLink>
-                    </div>
-                  </th>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+                        <NavLink to={`/updateMyPost/${data._id}`}>
+                          <button className="btn btn-ghost btn-xs ml-2 ">
+                            Update
+                          </button>
+                        </NavLink>
+                      </div>
+                    </th>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
     </div>
   );
