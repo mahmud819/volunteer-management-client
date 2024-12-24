@@ -1,66 +1,32 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useLoaderData } from "react-router-dom";
 
 import "../App.css";
 // import { Tooltip } from 'react-tooltip';
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { div } from "motion/react-client";
+import useAxiosHooks from "../Hooks/useAxiosHooks";
 
 const Navbar = () => {
-  const { user, userLogOut } = useContext(AuthContext);
-  // console.log(user);
-  const userData = useLoaderData();
-  const userInfo = userData?.find(
-    (data) => data?.email == user?.email && userData
-  );
-  // console.log(userInfo);
-  const { photo } = userInfo?.photo ? userInfo : <div>User image</div>;
-  const { name } = userInfo?.name ? userInfo : "User name";
-  // console.log(photo);
-
-  // const links = (
-  //   <>
-  //     <li>
-  //       <NavLink to="/">Home</NavLink>
-  //     </li>
-  //     <li>
-  //       <NavLink to="/allVolunteer">All Volunteer</NavLink>
-  //     </li>
-  //     {user && (
-  //       <li>
-  //         <details>
-  //           <summary>
-  //             <NavLink to="/myProfile">My Profile</NavLink>
-  //           </summary>
-  //           <ul className="mt-0 !important">
-  //             <li className="static  mb-2">
-  //               <NavLink className="w-full block">Add Volunteer</NavLink>
-  //             </li>
-  //             <li>
-  //               <NavLink className="w-full block">Manage My Post</NavLink>
-  //             </li>
-  //           </ul>
-  //         </details>
-  //       </li>
-  //     )}
-  //     {/* {user && (
-  //       <li>
-  //         <NavLink to="/jobsDetails">Jobs Details</NavLink>
-  //       </li>
-  //     )}
-  //     {user && (
-  //       <li>
-  //         <NavLink to="/addJobs">Add Jobs</NavLink>
-  //       </li>
-  //     )}
-  //     {user && (
-  //       <li>
-  //         <NavLink to="/applyJobs">Apply Jobs</NavLink>
-  //       </li> */}
-  //     {/* )} */}
-  //   </>
-  // );
-
+  const { user, userLogOut,setLoading } = useContext(AuthContext);
+  console.log(user);
+  const axiosHook = useAxiosHooks();
+  const [userInfo,setUserInfo] = useState([]);
+  useEffect(()=>{
+    setLoading(true)
+    axiosHook.get('http://localhost:5000/users')
+    .then(res=>{
+      console.log(res.data)
+      setUserInfo(res.data);
+      setLoading(false);
+    })
+    .catch(err=>
+      console.log(err.message)
+    )
+  },[])
+// const newUserData = [...userInfo];
+const userData = userInfo.find(data=>data?.email == user?.email);
+// console.log('this is from user data',userData.photo,);
   const handleLogOut = () => {
     userLogOut()
       .then((res) => {
@@ -72,7 +38,7 @@ const Navbar = () => {
   };
   return (
     <div className="navbar bg-red-950">
-      <div className="navbar-start">
+      <div className="navbar-start text-white">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
@@ -114,7 +80,7 @@ const Navbar = () => {
             
           </ul>
         </div>
-        <NavLink className="btn btn-ghost text-2xl font-extrablod">Volunteer Hub</NavLink>
+        <button className="btn font-xl font-extrablod lg:text-3xl">Volunteer Hub</button>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -141,8 +107,8 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end flex ">
-      <div className="w-50 h-50 rounded-full bg-slate-500">
-           <img className="avator w-12 rounded-full bg-gray-400" src={photo} alt="" />
+      <div className=" rounded-full w-10   bg-gray-300 mr-4">
+           <img className="avator w-[100%] rounded-full " src={userData?.photo} alt="user photo" />
       </div>
         {user?.email?<div>
       
