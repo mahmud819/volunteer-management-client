@@ -10,24 +10,24 @@ import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
   const { user, userLogOut,setLoading } = useContext(AuthContext);
-  // console.log(user);
+  console.log(user);
   const axiosHook = useAxiosHooks();
   const [userInfo,setUserInfo] = useState([]);
   useEffect(()=>{
-    setLoading(true)
-    axiosHook.get('http://localhost:5000/users')
+    // setLoading(true)
+    axiosHook.get('/users')
     .then(res=>{
       console.log(res.data)
       setUserInfo(res.data);
       setLoading(false);
     })
     .catch(err=>
-      console.log(err.message)
+      console.log(err,err.message) 
     )
   },[])
 // const newUserData = [...userInfo];
-const userData = userInfo.find(data=>data?.email == user?.email);
-// console.log('this is from user data',userData.photo,);
+const userData = userInfo?.find(data=>data?.email == user?.email);
+
   const handleLogOut = () => {
     userLogOut()
       .then((res) => {
@@ -37,6 +37,7 @@ const userData = userInfo.find(data=>data?.email == user?.email);
         console.log(error, error.message);
       });
   };
+  console.log(userInfo,userData,user)
   return (
     <div className="navbar bg-red-950">
       <div className="navbar-start text-white">
@@ -86,20 +87,20 @@ const userData = userInfo.find(data=>data?.email == user?.email);
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li className="">
-            <NavLink to='/' className='active btn'>Home</NavLink>
+            <NavLink to='/' className='isActive btn'>Home</NavLink>
           </li>
           <li className="ml-2">
-            <NavLink to='/allVolunteer' className='active btn'>All Volunteer</NavLink>
+            <NavLink to='/allVolunteer' className='isActive btn'>All Volunteer</NavLink>
           </li>
           {user&&<li className="ml-2">
             <details>
-             <summary className='active btn pt-4'><NavLink to='/myProfile'>My Profile</NavLink></summary>
+             <summary className='isActive btn pt-4'><NavLink to='/myProfile'>My Profile</NavLink></summary>
               <ul className="p-2 z-10">
                 <li >
-                  <NavLink to='/addVolunteer' className='active btn'>Add Volunteer</NavLink>
+                  <NavLink to='/addVolunteer' className='isActive btn'>Add Volunteer</NavLink>
                 </li>
                 <li className="">
-                  <NavLink to = '/manageMyPost' className='active btn'>Manage My Post</NavLink>
+                  <NavLink to = '/manageMyPost' className='isActive btn'>Manage My Post</NavLink>
                 </li>
               </ul>
             </details>
@@ -108,8 +109,8 @@ const userData = userInfo.find(data=>data?.email == user?.email);
         </ul>
       </div>
       <div className="navbar-end flex ">
-        {user&&<div className=" rounded-full w-10   bg-gray-300 mr-4">
-      <a data-tooltip-id="my-tooltip-styles"
+        {userData?.photo&&<div className=" rounded-full w-10   bg-gray-300 mr-4">
+          <a data-tooltip-id="my-tooltip-styles"
                     data-tooltip-content={userData?.name}>
            <img className="avator w-[100%] rounded-full " src={userData?.photo} alt="user photo" />
            </a>

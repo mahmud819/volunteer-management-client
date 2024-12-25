@@ -1,6 +1,8 @@
 import React from "react";
 import Banner from "./Banner";
 import VolunteerNeeds from "./VolunteerNeeds";
+import PopularOrg from "../PopularOrg/PopularOrg";
+import Support from "../Support/Support";
 
 const Home = () => {
   return (
@@ -13,10 +15,10 @@ const Home = () => {
             name="my_tabs_1"
             role="tab"
             className="tab"
-            aria-label="World Top Renders"
+            aria-label="Visit popular volunteer Org."
           />
           <div role="tabpanel" className="tab-content p-10">
-            Tab content 1
+            <PopularOrg></PopularOrg>
           </div>
 
           <input
@@ -36,10 +38,10 @@ const Home = () => {
             name="my_tabs_1"
             role="tab"
             className="tab"
-            aria-label="Tab 3"
+            aria-label="Any Support? Explore"
           />
           <div role="tabpanel" className="tab-content p-10">
-            Tab content 3
+            <Support></Support>
           </div>
         </div>
       </div>

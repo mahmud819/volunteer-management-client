@@ -5,8 +5,8 @@ const ManageMyPost = () => {
     return (
         <div> 
             <div className='flex py-4 px-2 justify-center items-center '>
-                <NavLink to='/manageMyPost/myVolunteerPost' className='btn active'>My Volunteer Post</NavLink>
-                <NavLink to='/manageMyPost/myRequestPost' className='btn active ml-2'>My Request Post</NavLink>
+                <NavLink to='/manageMyPost/myVolunteerPost' className='btn isActive'>My Volunteer Post</NavLink>
+                <NavLink to='/manageMyPost/myRequestPost' className='btn isActive ml-2'>My Request Post</NavLink>
                 {/* <div className='min-h-screen'></div> */}
             </div> 
             <Outlet></Outlet>

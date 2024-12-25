@@ -24,6 +24,7 @@ const AllVolunteer = () => {
           </svg>
         </label>
       </div>
+      <h1 className="text-2xl font-bold text-center">Total Post : {volunteersData.length} </h1>
       {volunteersData?.length == 0 ? (
         <div className="flex justify-center items-center min-h-screen">
           <h1 className="text-4xl font-bold text-center my-4">

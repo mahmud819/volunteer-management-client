@@ -1,7 +1,10 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import Swal from 'sweetalert2';
 import useAxiosHooks from "../Hooks/useAxiosHooks";
+import DatePicker from "react-datepicker";
+import 'react-datepicker/dist/react-datepicker.css';
+
 
 
 
@@ -9,7 +12,8 @@ const AddVolunteer = () => {
 
     const {user} = useContext(AuthContext);
     const axiosHook = useAxiosHooks();
-
+    const [startDate, setStartDate] = useState(new Date());
+    
     const handleAddVolunteers =e=>{
         e.preventDefault();
 
@@ -20,7 +24,7 @@ const AddVolunteer = () => {
         const title = e.target.title.value;
         const description = e.target.description.value;
         const volunteerNumber = e.target.volunteerNumber.value;
-        const deadline = e.target.deadline.value;
+        const deadline = startDate;
         const category = e.target.category.value;
 
         const data = {name,email,thumbnail,title,volunteerNumber,category,description,deadline}
@@ -114,12 +118,18 @@ const AddVolunteer = () => {
           <label className="label">
             <span className="label-text">Deadline</span>
           </label>
-          <input name="deadline"
+          {/* <input  name="deadline"
             type="text"
             placeholder="Deadline"
             className="input input-bordered"
             required
-          />
+          /> */}
+          
+          <DatePicker
+          showIcon
+          selected={startDate}
+          onChange={(date) => setStartDate(date)}
+        />
         </div>
         <div className="w-full form-control">
           <label className="label">

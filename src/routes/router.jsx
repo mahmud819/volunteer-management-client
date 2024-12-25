@@ -17,6 +17,9 @@ import MyVolunteerPost from "../MyProfile/MyVolunteerPost";
 import MyRequestPost from "../MyProfile/MyRequestPost";
 import MyProfile from "../MyProfile/MyProfile";
 import UpdateMyPost from "../MyProfile/UpdateMyPost";
+import Error from "../Error/Error";
+import ShowAll from "../ShowAll/ShowAll.jsx";
+import PopularOrg from "../PopularOrg/PopularOrg.jsx";
 
 
 
@@ -24,6 +27,7 @@ import UpdateMyPost from "../MyProfile/UpdateMyPost";
     {
         path:'/',
         element: <MainLayOut></MainLayOut>,
+        errorElement:<Error></Error>,
         children:[
           {
             path: '/',
@@ -60,7 +64,7 @@ import UpdateMyPost from "../MyProfile/UpdateMyPost";
           path: '/updateMyPost/:id',
           element: <PrivateRouter><UpdateMyPost></UpdateMyPost></PrivateRouter>,
           loader: ({ params }) =>
-            fetch(`http://localhost:5000/addVolunteers/${params.id}`),
+            fetch(`http://localhost:3000/addVolunteers/${params.id}`),
         },
         
         {
@@ -70,7 +74,7 @@ import UpdateMyPost from "../MyProfile/UpdateMyPost";
           </PrivateRouter> ,
           loader: async ({ params }) => {
             const res = await fetch(
-              "http://localhost:5000/addVolunteers"
+              "http://localhost:3000/addVolunteers"
             );
             const data = await res.json();
             const singleData = data.find((d) => d._id == params._id);
@@ -82,12 +86,20 @@ import UpdateMyPost from "../MyProfile/UpdateMyPost";
           element: <PrivateRouter><BeAVolunteer></BeAVolunteer></PrivateRouter>,
           loader: async ({ params }) => {
             const res = await fetch(
-              "http://localhost:5000/addVolunteers"
+              "http://localhost:3000/addVolunteers"
             );
             const data = await res.json();
             const singleData = data.find((d) => d._id == params._id);
             return singleData;
           },
+        },
+        {
+          path: '/showAll',
+          element: <ShowAll></ShowAll>
+        },
+        {
+          path: '/popularOrg',
+          element: <PopularOrg></PopularOrg>
         },
         {
           path: '/register',

@@ -5,7 +5,7 @@ const AllVoluntersCard = ({data}) => {
   
   const {
     title,name,description,deadline,thumbnail,_id,volunteerNumber,category,} = data;
-    console.log(data,title);
+    // console.log(data,title);
   return (
     <div className="p-4 rounded-lg card-compact bg-base-100 w-[100%] shadow-xl">
       <figure>

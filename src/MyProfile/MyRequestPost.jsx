@@ -12,7 +12,7 @@ const MyRequestPost = () => {
   useEffect(() => {
     setLoading(true);
     axiosHook
-      .get("http://localhost:5000/beAVolunteer")
+      .get("http://localhost:3000/beAVolunteer")
       .then((res) => {
         console.log(res.data);
         setRequestedData(res.data);
