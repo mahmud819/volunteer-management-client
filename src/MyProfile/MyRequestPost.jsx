@@ -12,9 +12,9 @@ const MyRequestPost = () => {
   useEffect(() => {
     setLoading(true);
     axiosHook
-      .get("http://localhost:3000/beAVolunteer")
+      .get("https://volunteer-website-server-mu.vercel.app/beAVolunteer")
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setRequestedData(res.data);
         setLoading(false);
       })
@@ -37,7 +37,7 @@ const MyRequestPost = () => {
         axiosHook
           .delete(`/beAVolunteer/${id}`)
           .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             Swal.fire({
               title: "Cencel!",
               text: "Your Request is Canceled.",

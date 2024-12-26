@@ -11,7 +11,7 @@ const UpdateMyPost = () => {
     const data=useLoaderData();
     const axiosHook = useAxiosHooks();
     const {user} = useContext(AuthContext);
-    console.log(data); 
+    // console.log(data); 
     const {title,description,deadline,email,thumbnail,_id,volunteerNumber,category,name} = data;
     const handleUpdatePost =e=>{
           e.preventDefault();
@@ -30,7 +30,7 @@ const UpdateMyPost = () => {
           const updatedData = {title,description,deadline,email,thumbnail,category,name,volunteerName}
           axiosHook.put(`/addVolunteers/${_id}`,updatedData)
           .then(res=>{
-            console.log(res)
+            // console.log(res)
             Swal.fire({
                         title: "Well Done!",
                         text: "Post Update is successfull!",

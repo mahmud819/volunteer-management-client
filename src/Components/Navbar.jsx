@@ -7,10 +7,12 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 import { div } from "motion/react-client";
 import useAxiosHooks from "../Hooks/useAxiosHooks";
 import { Tooltip } from "react-tooltip";
+import ThemeContext from "../Themecontrol/themeControl";
 
 const Navbar = () => {
   const { user, userLogOut,setLoading } = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
+  const {theme,toggleTheme} = useContext(ThemeContext);
   const axiosHook = useAxiosHooks();
   const [userInfo,setUserInfo] = useState([]);
   useEffect(()=>{
@@ -37,7 +39,7 @@ const userData = userInfo?.find(data=>data?.email == user?.email);
         console.log(error, error.message);
       });
   };
-  console.log(userInfo,userData,user)
+  // console.log(userInfo,userData,user)
   return (
     <div className="navbar bg-red-950">
       <div className="navbar-start text-white">
@@ -109,6 +111,9 @@ const userData = userInfo?.find(data=>data?.email == user?.email);
         </ul>
       </div>
       <div className="navbar-end flex ">
+        <div className="mr-2">
+          <button onClick={toggleTheme} className="btn">Switch to {theme==='light'?'Dark':'Light'}</button>
+        </div>
         {userData?.photo&&<div className=" rounded-full w-10   bg-gray-300 mr-4">
           <a data-tooltip-id="my-tooltip-styles"
                     data-tooltip-content={userData?.name}>

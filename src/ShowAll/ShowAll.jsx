@@ -4,7 +4,7 @@ import AllVoluntersCard from '../Components/AllVolunteersInfo/AllVoluntersCard';
 
 const ShowAll = () => {
     const allData = useAllVolunteer();
-    console.log(allData);
+    // console.log(allData);
     return (
         <div>
             <div className='py-4'>

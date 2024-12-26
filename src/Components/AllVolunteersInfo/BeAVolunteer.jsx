@@ -31,7 +31,7 @@ const BeAVolunteer = () => {
       const requestedData = {title,description,deadline,email,thumbnail,applydId,volunteerNumber,category,name,volunteerName,volunteerEmail,status,suggestion}
       axiosHook.post('/beAVolunteer',requestedData)
       .then(res=>{
-        console.log(res)
+        // console.log(res)
         Swal.fire({
                           title: "Well Done!",
                           text: "Apply as a Volunteer successfull!",

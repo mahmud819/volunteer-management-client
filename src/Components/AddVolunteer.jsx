@@ -28,11 +28,11 @@ const AddVolunteer = () => {
         const category = e.target.category.value;
 
         const data = {name,email,thumbnail,title,volunteerNumber,category,description,deadline}
-        console.log(data);
+        // console.log(data);
         // axios.post('http://localhost:5000/addedJobs',data,{withCredentials:true})
         axiosHook.post('/addVolunteers',data)
         .then(res=>{
-            console.log(res);
+            // console.log(res);
             Swal.fire({
                       title: "Well Done!",
                       text: "Your Post is added successfuly!",

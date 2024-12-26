@@ -3,7 +3,7 @@ import React from 'react';
 const PopularOrgCard = ({data}) => {
     const{organization_name,organization_logo,working_country
 , working_type,established_year} = data;
-    console.log(data)
+    // console.log(data)
     return (
         
         <div className="p-4 rounded-lg card-compact bg-base-100 w-[100%] shadow-xl">

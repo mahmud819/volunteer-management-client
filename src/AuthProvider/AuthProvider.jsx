@@ -51,7 +51,7 @@ const AuthProvider = ({children}) => {
             else{
                 axios.post('http://localhost:5000/logOut',{},{withCredentials:true})
                 .then(res=>{
-                    console.log('log out token',res.data);
+                    // console.log('log out token',res.data);
                     setLoading(false);
                 })
 
