@@ -19,7 +19,7 @@ const Navbar = () => {
     // setLoading(true)
     axiosHook.get('/users')
     .then(res=>{
-      console.log(res.data)
+      // console.log(res.data)
       setUserInfo(res.data);
       setLoading(false);
     })
