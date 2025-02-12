@@ -10,25 +10,24 @@ import { Tooltip } from "react-tooltip";
 import ThemeContext from "../Themecontrol/themeControl";
 
 const Navbar = () => {
-  const { user, userLogOut,setLoading } = useContext(AuthContext);
+  const { user, userLogOut, setLoading } = useContext(AuthContext);
   // console.log(user);
-  const {theme,toggleTheme} = useContext(ThemeContext);
+  const { theme, toggleTheme } = useContext(ThemeContext);
   const axiosHook = useAxiosHooks();
-  const [userInfo,setUserInfo] = useState([]);
-  useEffect(()=>{
+  const [userInfo, setUserInfo] = useState([]);
+  useEffect(() => {
     // setLoading(true)
-    axiosHook.get('/users')
-    .then(res=>{
-      // console.log(res.data)
-      setUserInfo(res.data);
-      setLoading(false);
-    })
-    .catch(err=>
-      console.log(err,err.message) 
-    )
-  },[])
-// const newUserData = [...userInfo];
-const userData = userInfo?.find(data=>data?.email == user?.email);
+    axiosHook
+      .get("/users")
+      .then((res) => {
+        // console.log(res.data)
+        setUserInfo(res.data);
+        // setLoading(false);
+      })
+      .catch((err) => console.log(err, err.message));
+  }, []);
+  // const newUserData = [...userInfo];
+  const userData = userInfo?.find((data) => data?.email == user?.email);
 
   const handleLogOut = () => {
     userLogOut()
@@ -41,7 +40,7 @@ const userData = userInfo?.find(data=>data?.email == user?.email);
   };
   // console.log(userInfo,userData,user)
   return (
-    <div className="navbar bg-red-950">
+    <div className="navbar fixed top-0 z-20 backdrop-blur-lg border border-white/30 bg-[rgb(19, 15, 64)] px-8">
       <div className="navbar-start text-white">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -65,70 +64,156 @@ const userData = userInfo?.find(data=>data?.email == user?.email);
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             <li>
-              <NavLink to='/' className='active btn'>Home</NavLink>
+              <NavLink
+                to="/"
+                className="active btn btn-outline btn-sm btn-success"
+              >
+                Home
+              </NavLink>
             </li>
             <li>
-                  <NavLink to='/allVolunteer' className='active btn'>All Volunteer</NavLink>
+              <NavLink
+                to="/allVolunteer"
+                className="active btn btn-outline btn-sm btn-success"
+              >
+                All Volunteer
+              </NavLink>
             </li>
-            {user&&<li>
-              <NavLink to= '/myProfile' className='active btn'>My Profile</NavLink>
-              <ul className="p-2">
-                <li>
-                  <NavLink to='/addVolunteer' className='active btn'>Add Volunteer</NavLink>
-                </li>
-                <li>
-                  <NavLink to='/manageMyPost' className='active btn'>Manage My Post</NavLink>
-                </li>
-              </ul>
-            </li>}
-            
+            {user && (
+              <li>
+                <NavLink
+                  to="/myProfile"
+                  className="active btn btn-outline btn-sm btn-success"
+                >
+                  My Profile
+                </NavLink>
+              </li>
+            )}
+            {user && (
+              <li>
+                <NavLink
+                  to="/addVolunteer"
+                  className="active btn btn-outline btn-sm btn-success"
+                >
+                  Add Volunteer
+                </NavLink>
+              </li>
+            )}
+            {user && (
+              <li>
+                <NavLink
+                  to="/manageMyPost"
+                  className="active btn btn-outline btn-sm btn-success"
+                >
+                  Manage My Post
+                </NavLink>
+              </li>
+            )}
           </ul>
         </div>
-        <button className="btn font-xl font-extrablod lg:text-3xl">Volunteer Hub</button>
+        <div className="w-10 h-10">
+          <NavLink to="/">
+            <img
+              src="https://i.ibb.co.com/0VR2Cjsb/customer-service-11803196.png"
+              alt="logo"
+            />
+          </NavLink>
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
+        <ul className="menu menu-horizontal px-1 gap-x-2">
           <li className="">
-            <NavLink to='/' className='isActive btn'>Home</NavLink>
+            <NavLink to="/" className=" btn btn-outline btn-sm btn-primary">
+              Home
+            </NavLink>
           </li>
-          <li className="ml-2">
-            <NavLink to='/allVolunteer' className='isActive btn'>All Volunteer</NavLink>
+          <li className="">
+            <NavLink
+              to="/allVolunteer"
+              className="isActive btn btn-outline btn-sm btn-primary"
+            >
+              All Volunteer
+            </NavLink>
           </li>
-          {user&&<li className="ml-2">
-            <details>
-             <summary className='isActive btn pt-4'><NavLink to='/myProfile'>My Profile</NavLink></summary>
-              <ul className="p-2 z-10">
-                <li >
-                  <NavLink to='/addVolunteer' className='isActive btn'>Add Volunteer</NavLink>
-                </li>
-                <li className="">
-                  <NavLink to = '/manageMyPost' className='isActive btn'>Manage My Post</NavLink>
-                </li>
-              </ul>
-            </details>
-          </li>}
-          
+          {user && (
+            <li className="">
+              <NavLink
+                to="/myProfile"
+                className="isActive btn btn-outline btn-sm btn-primary"
+              >
+                My Profile
+              </NavLink>
+            </li>
+          )}
+          {user && (
+            <li>
+              <NavLink
+                to="/addVolunteer"
+                className="isActive btn btn-outline btn-sm btn-primary"
+              >
+                Add Volunteer
+              </NavLink>
+            </li>
+          )}
+          {user && (
+            <li className="">
+              <NavLink
+                to="/manageMyPost"
+                className="isActive btn btn-outline btn-sm btn-primary"
+              >
+                Manage My Post
+              </NavLink>
+            </li>
+          )}
         </ul>
       </div>
       <div className="navbar-end flex ">
         <div className="mr-2">
-          <button onClick={toggleTheme} className="btn">Switch to {theme==='light'?'Dark':'Light'}</button>
+          <button
+            onClick={toggleTheme}
+            className="btn btn-outline btn-sm btn-primary"
+          >
+            Switch to {theme === "light" ? "Dark" : "Light"}
+          </button>
         </div>
-        {userData?.photo&&<div className=" rounded-full w-10   bg-gray-300 mr-4">
-          <a data-tooltip-id="my-tooltip-styles"
-                    data-tooltip-content={userData?.name}>
-           <img className="avator w-[100%] rounded-full " src={userData?.photo} alt="user photo" />
-           </a>
-           <Tooltip id="my-tooltip-styles" className="example" />
-      </div>}
-      
-        {user?.email?<div>
-      
-          <NavLink onClick={handleLogOut} className="btn">Logout</NavLink>
-        </div>:<div>
-          <NavLink to='/login' className="btn">Login</NavLink>
-          <NavLink to='/register' className="btn ml-2">Register</NavLink>
-          </div>}
+        {userData?.photo && (
+          <div className=" rounded-full w-10   bg-gray-300 mr-4">
+            <a
+              data-tooltip-id="my-tooltip-styles"
+              data-tooltip-content={userData?.name}
+            >
+              <img
+                className="avator w-[100%] rounded-full "
+                src={userData?.photo}
+                alt="user photo"
+              />
+            </a>
+            <Tooltip id="my-tooltip-styles" className="example" />
+          </div>
+        )}
+
+        {user?.email ? (
+          <div>
+            <NavLink
+              onClick={handleLogOut}
+              className="btn btn-outline btn-sm btn-primary"
+            >
+              Logout
+            </NavLink>
+          </div>
+        ) : (
+          <div>
+            <NavLink to="/login" className="btn btn-outline btn-sm btn-primary">
+              Login
+            </NavLink>
+            <NavLink
+              to="/register"
+              className="btn ml-2 btn-outline btn-sm btn-primary"
+            >
+              Register
+            </NavLink>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -33,8 +33,8 @@ const AllVolunteer = () => {
         </div>
       ) : (
         <div className="flex flex-col justify-center items-center mt-4 ">
-          {volunteersData.map((data) => (
-            <VolunteersCard key={data._id} data={data}></VolunteersCard>
+          {volunteersData?.map((data) => (
+            <VolunteersCard key={data?._id} data={data}></VolunteersCard>
           ))}
         </div>
       )}

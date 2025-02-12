@@ -33,6 +33,7 @@ const AuthProvider = ({children}) => {
         createUser,
         loginUser,
         userLogOut,
+        loading,
         setLoading
     }
     useEffect(()=>{
@@ -42,14 +43,14 @@ const AuthProvider = ({children}) => {
             
             if(currentUser?.email){
                 const user = {email : currentUser.email};
-                axios.post('http://localhost:5000/jwt',user,{withCredentials:true})
+                axios.post('http://localhost:3000/jwt',user,{withCredentials:true})
                 .then(res=>{
                     // console.log(res);
                     setLoading(false);
                 })
             }
             else{
-                axios.post('http://localhost:5000/logOut',{},{withCredentials:true})
+                axios.post('http://localhost:3000/logOut',{},{withCredentials:true})
                 .then(res=>{
                     // console.log('log out token',res.data);
                     setLoading(false);

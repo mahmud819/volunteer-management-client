@@ -17,7 +17,7 @@ const VolunteerNeeds = () => {
   return (
     <div>
       <div className="grid grid-cols-1 mt-6 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {updateData.map((data) => (
+        {updateData?.map((data) => (
           <AllVoluntersCard key={data._id} data={data}></AllVoluntersCard>
         ))}
       </div>

@@ -13,7 +13,7 @@ const useAllVolunteer = () => {
         setLoading(true);
         axiosHook.get('/addVolunteers')
         .then(res=>{
-            // console.log(res)
+            console.log(res)
             setVolunteers(res.data);
             setLoading(false);
         })

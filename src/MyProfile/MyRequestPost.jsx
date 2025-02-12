@@ -10,13 +10,13 @@ const MyRequestPost = () => {
   const { setLoading } = useContext(AuthContext);
   const [requestedData, setRequestedData] = useState([]);
   useEffect(() => {
-    setLoading(true);
+    
     axiosHook
-      .get("https://volunteer-website-server-mu.vercel.app/beAVolunteer")
+      .get("http://localhost:3000/beAVolunteer")
       .then((res) => {
         // console.log(res.data);
         setRequestedData(res.data);
-        setLoading(false);
+        
       })
       .catch((err) => {
         console.log(err, err.message);
@@ -79,7 +79,7 @@ const MyRequestPost = () => {
                 </tr>
               </thead>
               <tbody>
-                {requestedData.map((data) => (
+                {requestedData?.map((data) => (
                   <tr>
                     <td>
                       <div className="flex items-center gap-3">

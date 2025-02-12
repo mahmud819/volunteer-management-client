@@ -37,7 +37,7 @@ const Login = () => {
           console.log(err,err.message);
         })
         const newUser = {email : email,name : name}
-        axios.post('https://volunteer-website-server-mu.vercel.app/jwt',newUser,{withCredentials:true})
+        axios.post('http://localhost:5173/jwt',newUser,{withCredentials:true})
         .then(res=>{
           console.log(res.data);
         })
