@@ -1,13 +1,13 @@
-
-import axios from 'axios';
-
+import axios from "axios";
 
 const axiosInstance = axios.create({
-    baseURL: 'http://localhost:3000',
-    // withCredentials : true,
-  });
+  baseURL:
+    "https://volunteer-website-server-mu.vercel.app",
+  // baseURL: 'https://volunteer-website-server-mu.vercel.app',
+  // withCredentials : true,
+});
 const useAxiosHooks = () => {
-    return axiosInstance;
+  return axiosInstance;
 };
 
 export default useAxiosHooks;

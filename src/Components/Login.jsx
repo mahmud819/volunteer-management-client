@@ -37,7 +37,7 @@ const Login = () => {
           console.log(err,err.message);
         })
         const newUser = {email : email,name : name}
-        axios.post('http://localhost:5173/jwt',newUser,{withCredentials:true})
+        axios.post('https://volunteer-website-server-mu.vercel.app/jwt',newUser,{withCredentials:true})
         .then(res=>{
           console.log(res.data);
         })
@@ -49,16 +49,17 @@ const Login = () => {
         console.log(error);
       });
     // console.log({email,password})
+    e.target.reset();
   };
   return (
-    <div className="hero bg-base-200 min-h-screen">
-      <div className="hero-content flex-col lg:flex-row-reverse">
+    <div className="p-4  bg-base-300 min-h-screen">
+      <div className="flex flex-col justify-center items-center lg:flex-row-reverse">
         <div className="text-center lg:text-left">
           <Lottie animationData={signInLottie}></Lottie>
         </div>
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-          <h1 className="text-5xl font-bold">Login now!</h1>
-          <form onSubmit={handleLogin} className="card-body">
+        <div className="card bg-base-100 w-full max-w-md shrink-0 shadow-2xl">
+          <h1 className="text-5xl font-bold text-center pt-2">Login now</h1>
+          <form onSubmit={handleLogin} className="py-2 px-6">
           <div className="form-control">
               <label className="label">
                 <span className="label-text">User Name</span>
@@ -100,7 +101,7 @@ const Login = () => {
                 </a>
               </label>
             </div>
-            <div className="form-control mt-6">
+            <div className="form-control mt-2">
               <button className="btn btn-primary">Login</button>
             </div>
           </form>

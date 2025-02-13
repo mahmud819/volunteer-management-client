@@ -45,14 +45,14 @@ const Resigter = () => {
     naviGate('/login')
   };
   return (
-    <div className="hero bg-base-200 min-h-screen">
-      <div className="hero-content flex-col lg:flex-row-reverse">
+    <div className="p-4  bg-base-300">
+      <div className="flex justify-center -mt-12 items-center flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
           <Lottie animationData={lottieData}></Lottie>
         </div>
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-        <h1 className="text-5xl font-bold">Resigter now!</h1>
-          <form onSubmit={handleRegister} className="card-body">
+        <div className="card bg-base-100 w-full max-w-md shrink-0 shadow-2xl">
+        <h1 className="text-5xl font-bold text-center pt-2">Resigter now</h1>
+          <form onSubmit={handleRegister} className="py-2 px-6">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Name</span>

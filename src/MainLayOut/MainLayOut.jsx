@@ -8,7 +8,7 @@ const MainLayOut = () => {
     return (
         <div className='bg-gradient-to-r from-[#541f78] to-[#941f78] '>
             <Header></Header>
-            <div className='px-8 pt-24'>
+            <div className='px-8 pt-20'>
             <Outlet></Outlet>
             </div>
             

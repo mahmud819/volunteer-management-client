@@ -39,10 +39,11 @@ const AddVolunteer = () => {
                       icon: "success"
                     });
         })
+        e.target.reset();
     }
     return (
     <div>
-      <h1 className="text-4xl font-bold text-center py-2">Add Volunteer Post</h1>
+      <h1 className="text-4xl font-bold text-center py-2 text-white">Add Volunteer Post</h1>
       <form onSubmit={handleAddVolunteers} className="w-4/5 mx-auto mt-6 rounded-lg bg-gray-300 p-4 grid grid-cols-1 gap-4 lg:grid-cols-2 ">
         <div className="w-full form-control">
           <label className="label">

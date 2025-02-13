@@ -36,15 +36,16 @@ const UpdateMyPost = () => {
                         text: "Post Update is successfull!",
                         icon: "success"
                             });
+           e.target.reset();              
           })
           .catch(error=>{
             console.log(error,error.message);
           })
-          
+          e.target.reset();
         }
     return (
-    <div>
-      <h1 className="text-4xl font-bold text-center py-2">Apply As A Volunteer</h1>
+    <div >
+      <h1 className="text-4xl font-bold text-center py-2 text-white">Update Volunteer Information</h1>
       <form onSubmit={handleUpdatePost} className="w-4/5 mx-auto mt-6 rounded-lg bg-gray-300 p-4 grid grid-cols-1 gap-4 lg:grid-cols-2 ">
         <div className="w-full form-control">
           <label className="label">
@@ -177,7 +178,7 @@ const UpdateMyPost = () => {
           />
         </div>
         <div className="">
-          <button className="btn mx-auto">Update Post</button>
+          <button className="btn mx-auto">Update volunteer information</button>
         </div>
       </form>
     </div>

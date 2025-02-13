@@ -55,16 +55,79 @@ const MyVolunteerPost = () => {
     });
   };
   return (
+    <div className="text-white">
+      <h1 className="text-2xl font-bold text-center">
+        Volunteer Posted By Me : {myPostData?.length}
+      </h1>
+      <div>
+        {myPostData?.length == 0? (
+          <div className="flex justify-center items-center min-h-screen">
+            <h1 className="text-4xl font-bold text-center my-4">Data Not Found</h1>
+          </div>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="table">
+              {/* head */}
+              <thead>
+                <tr className="text-lg font-bold text-white">
+                  <th> Name</th>
+                  <th>Add By</th>
+                  <th> Type</th>
+                  <th>Delete/Update</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {myPostData?.map((data) => (
+                  <tr>
+                    <td>
+                      <div className="flex items-center gap-3">
+                        <div className="avatar">
+                          <div className="mask mask-squircle h-12 w-12">
+                            <img
+                              src={data?.thumbnail}
+                              alt="Avatar Tailwind CSS Component"
+                            />
+                          </div>
+                        </div>
+                        <div>
+                          <div className="font-bold">{data?.title} </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>{data?.email}</td>
+                    <td>{data?.category}</td>
+                    <th>
+                      <div className="flex">
+                        <button
+                          onClick={() => handlePostDelete(data?._id)}
+                          className="btn btn-ghost btn-xs"
+                        >
+                          Delete
+                        </button>
+                        <NavLink to={`/updateMyPost/${data?._id}`}>
+                          <button className="btn btn-ghost btn-xs ml-2 ">
+                            Update
+                          </button>
+                        </NavLink>
+                      </div>
+                    </th>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
+    </div>
     // <div>
     //   <h1 className="text-2xl font-bold text-center">
     //     Volunteer Data Posted By Me
     //   </h1>
     //   <div>
-    //     {myPostData?.length? (
-    //       <div className="flex justify-center items-center min-h-screen">
-    //         <h1 className="text-4xl font-bold text-center my-4">Data Not Found</h1>
-    //       </div>
-    //     ) : (
+        
+          
+      
     //       <div className="overflow-x-auto">
     //         <table className="table">
     //           {/* head */}
@@ -117,72 +180,9 @@ const MyVolunteerPost = () => {
     //           </tbody>
     //         </table>
     //       </div>
-    //     )}
+        
     //   </div>
     // </div>
-    <div>
-      <h1 className="text-2xl font-bold text-center">
-        Volunteer Data Posted By Me
-      </h1>
-      <div>
-        
-          
-      
-          <div className="overflow-x-auto">
-            <table className="table">
-              {/* head */}
-              <thead>
-                <tr className="text-lg font-bold text-black">
-                  <th> Name</th>
-                  <th>Add By</th>
-                  <th> Type</th>
-                  <th>Delete/Update</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                {myPostData?.map((data) => (
-                  <tr>
-                    <td>
-                      <div className="flex items-center gap-3">
-                        <div className="avatar">
-                          <div className="mask mask-squircle h-12 w-12">
-                            <img
-                              src={data?.thumbnail}
-                              alt="Avatar Tailwind CSS Component"
-                            />
-                          </div>
-                        </div>
-                        <div>
-                          <div className="font-bold">{data?.title} </div>
-                        </div>
-                      </div>
-                    </td>
-                    <td>{data?.email}</td>
-                    <td>{data?.category}</td>
-                    <th>
-                      <div className="flex">
-                        <button
-                          onClick={() => handlePostDelete(data?._id)}
-                          className="btn btn-ghost btn-xs"
-                        >
-                          Delete
-                        </button>
-                        <NavLink to={`/updateMyPost/${data?._id}`}>
-                          <button className="btn btn-ghost btn-xs ml-2 ">
-                            Update
-                          </button>
-                        </NavLink>
-                      </div>
-                    </th>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        
-      </div>
-    </div>
   );
 };
 

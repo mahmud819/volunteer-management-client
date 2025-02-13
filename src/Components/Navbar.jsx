@@ -61,7 +61,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow gap-y-2"
           >
             <li>
               <NavLink
@@ -111,7 +111,7 @@ const Navbar = () => {
             )}
           </ul>
         </div>
-        <div className="w-10 h-10">
+        <div className="w-14 h-14">
           <NavLink to="/">
             <img
               src="https://i.ibb.co.com/0VR2Cjsb/customer-service-11803196.png"
@@ -167,8 +167,8 @@ const Navbar = () => {
           )}
         </ul>
       </div>
-      <div className="navbar-end flex ">
-        <div className="mr-2">
+      <div className="navbar-end w-full flex ">
+        <div className=" mr-2">
           <button
             onClick={toggleTheme}
             className="btn btn-outline btn-sm btn-primary"
@@ -202,7 +202,7 @@ const Navbar = () => {
             </NavLink>
           </div>
         ) : (
-          <div>
+          <div className="flex">
             <NavLink to="/login" className="btn btn-outline btn-sm btn-primary">
               Login
             </NavLink>

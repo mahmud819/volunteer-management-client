@@ -6,10 +6,11 @@ import Support from "../Support/Support";
 
 const Home = () => {
   return (
-    <div>
+    <div className="mx-auto2">
       <Banner></Banner>
-      <div className="flex flex-col justify-center items-center mt-4">
-        <div role="tablist" className="tabs tabs-bordered ">
+
+      <div className="mx-auto mt-4">
+        <div role="tablist" className="tabs tabs-bordered mx-auto ">
           <input
             type="radio"
             name="my_tabs_1"
@@ -45,6 +46,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+
     </div>
   );
 };

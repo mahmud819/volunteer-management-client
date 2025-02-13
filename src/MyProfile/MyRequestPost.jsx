@@ -12,7 +12,7 @@ const MyRequestPost = () => {
   useEffect(() => {
     
     axiosHook
-      .get("http://localhost:3000/beAVolunteer")
+      .get("https://volunteer-website-server-mu.vercel.app/beAVolunteer")
       .then((res) => {
         // console.log(res.data);
         setRequestedData(res.data);
@@ -57,8 +57,8 @@ const MyRequestPost = () => {
   };
   return (
     <div>
-      <h1 className="text-2xl font-bold text-center">My Requested Post</h1>
-      <div>
+      <h1 className="text-2xl font-bold text-center text-white">My Requested Post : {requestedData?.length}</h1>
+      <div className="text-white">
         {requestedData?.length == 0 ? (
           <div className="flex justify-center items-center min-h-screen">
             <h1 className="text-4xl font-bold text-center my-4">
@@ -70,7 +70,7 @@ const MyRequestPost = () => {
             <table className="table">
               {/* head */}
               <thead>
-                <tr className="text-lg font-bold text-black">
+                <tr className="text-lg font-bold text-white">
                   <th> Name</th>
                   <th>Add By</th>
                   <th> Type</th>

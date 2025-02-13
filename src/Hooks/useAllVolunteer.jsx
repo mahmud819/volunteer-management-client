@@ -10,12 +10,15 @@ const useAllVolunteer = () => {
     const [volunteers,setVolunteers] = useState([]);
     // console.log(volunteers);
     useEffect(()=>{
-        setLoading(true);
+        
         axiosHook.get('/addVolunteers')
         .then(res=>{
             console.log(res)
             setVolunteers(res.data);
-            setLoading(false);
+            
+        })
+        .catch(error=>{
+            console.log(error,error.message);
         })
     },[])
     return volunteers

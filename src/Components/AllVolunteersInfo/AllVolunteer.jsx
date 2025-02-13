@@ -4,7 +4,7 @@ import VolunteersCard from "./VolunteersCard";
 
 const AllVolunteer = () => {
   const volunteersData = useAllVolunteer();
-  // console.log(volunteersData);
+  console.log(volunteersData);
   return (
     <div>
       <div className="w-[80%] py-4 mx-auto">
