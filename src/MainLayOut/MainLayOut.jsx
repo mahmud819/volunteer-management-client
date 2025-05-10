@@ -6,9 +6,10 @@ import Footer from '../Pages/Footer';
 
 const MainLayOut = () => {
     return (
-        <div className='bg-gradient-to-r from-[#541f78] to-[#941f78] '>
+        // <div className='bg-gradient-to-r from-[#341f78] via-[#741f78] to-[#441f78] '>
+        <div >
             <Header></Header>
-            <div className='px-8 pt-20'>
+            <div className='px-8 pt-20 lg:pb-4'>
             <Outlet></Outlet>
             </div>
             

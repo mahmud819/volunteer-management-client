@@ -3,13 +3,15 @@ import Banner from "./Banner";
 import VolunteerNeeds from "./VolunteerNeeds";
 import PopularOrg from "../PopularOrg/PopularOrg";
 import Support from "../Support/Support";
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 
 const Home = () => {
   return (
     <div className="mx-auto2">
       <Banner></Banner>
 
-      <div className="mx-auto mt-4">
+      {/* <div className="mx-auto mt-4">
         <div role="tablist" className="tabs tabs-bordered mx-auto ">
           <input
             type="radio"
@@ -45,7 +47,31 @@ const Home = () => {
             <Support></Support>
           </div>
         </div>
+      </div> */}
+
+<Tabs>
+    <TabList className=''>
+      <Tab>Popular Organaizations</Tab>
+      <Tab>Volunteer Needs</Tab>
+      <Tab>Any Support?</Tab>
+    </TabList>
+
+    <TabPanel>
+      <div>
+      <PopularOrg></PopularOrg>
       </div>
+    </TabPanel>
+    <TabPanel>
+      <div>
+      <VolunteerNeeds></VolunteerNeeds>
+      </div>
+    </TabPanel>
+    <TabPanel>
+      <div>
+      <Support></Support>
+      </div>
+    </TabPanel>
+  </Tabs>
 
     </div>
   );

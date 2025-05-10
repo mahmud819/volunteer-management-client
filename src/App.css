@@ -1,4 +1,31 @@
 .active{
- background-color: rgb(231, 221, 233);
+ /* background-color: rgba(235, 116, 235, 0.709); */
+ /* background-color: rgba(235, 116, 235, 0.709); */
+ background-color: white;
+ color: black;
  
+}
+
+/* .active{
+    color: white;
+    border-top: 3px solid rgba(246, 244, 246, 0.976);
+    border-bottom: 3px solid white;
+    font-size: larger;
+
+    padding: 2px;
+    border-left : none;
+    border-right: none;
+    background-color: rgba(73, 28, 163,0.9);
+} */
+.my-btn{
+    /* color: white;
+    border: 2px solid white; */
+    font-size: larger;
+    /* padding: 4px;
+    background-color: rgba(0, 0, 0,0.1); */
+}
+.active{
+    background-color:#e81794;
+    color: white !important;
+    border: none;
 }

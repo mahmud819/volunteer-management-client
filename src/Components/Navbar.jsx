@@ -27,7 +27,7 @@ const Navbar = () => {
       .catch((err) => console.log(err, err.message));
   }, []);
   // const newUserData = [...userInfo];
-  const userData = userInfo?.find((data) => data?.email == user?.email);
+  // const userData = userInfo?.find((data) => data?.email == user?.email);
 
   const handleLogOut = () => {
     userLogOut()
@@ -66,7 +66,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 to="/"
-                className="active btn btn-outline btn-sm btn-success"
+                className="active btn btn-outline btn-sm btn-secondary my-btn"
               >
                 Home
               </NavLink>
@@ -74,7 +74,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 to="/allVolunteer"
-                className="active btn btn-outline btn-sm btn-success"
+                className="active btn btn-outline btn-sm btn-secondary my-btn"
               >
                 All Volunteer
               </NavLink>
@@ -83,7 +83,7 @@ const Navbar = () => {
               <li>
                 <NavLink
                   to="/myProfile"
-                  className="active btn btn-outline btn-sm btn-success"
+                  className="active btn btn-outline btn-sm btn-secondary my-btn"
                 >
                   My Profile
                 </NavLink>
@@ -93,7 +93,7 @@ const Navbar = () => {
               <li>
                 <NavLink
                   to="/addVolunteer"
-                  className="active btn btn-outline btn-sm btn-success"
+                  className="active btn btn-outline btn-sm btn-secondary my-btn"
                 >
                   Add Volunteer
                 </NavLink>
@@ -103,7 +103,7 @@ const Navbar = () => {
               <li>
                 <NavLink
                   to="/manageMyPost"
-                  className="active btn btn-outline btn-sm btn-success"
+                  className="active btn btn-outline btn-sm btn-secondary my-btn"
                 >
                   Manage My Post
                 </NavLink>
@@ -112,25 +112,25 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="w-14 h-14">
-          <NavLink to="/">
+          <Link to="/">
             <img
               src="https://i.ibb.co.com/0VR2Cjsb/customer-service-11803196.png"
               alt="logo"
             />
-          </NavLink>
+          </Link>
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 gap-x-2">
           <li className="">
-            <NavLink to="/" className=" btn btn-outline btn-sm btn-primary">
+            <NavLink to="/" className="btn btn-outline  btn-sm   btn-secondary my-btn">
               Home
             </NavLink>
           </li>
           <li className="">
             <NavLink
               to="/allVolunteer"
-              className="isActive btn btn-outline btn-sm btn-primary"
+              className="isActive btn btn-outline btn-sm my-btn btn-secondary"
             >
               All Volunteer
             </NavLink>
@@ -139,7 +139,7 @@ const Navbar = () => {
             <li className="">
               <NavLink
                 to="/myProfile"
-                className="isActive btn btn-outline btn-sm btn-primary"
+                className="isActive btn btn-outline btn-sm btn-secondary my-btn"
               >
                 My Profile
               </NavLink>
@@ -149,7 +149,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 to="/addVolunteer"
-                className="isActive btn btn-outline btn-sm btn-primary"
+                className="isActive btn btn-outline btn-sm btn-secondary my-btn"
               >
                 Add Volunteer
               </NavLink>
@@ -159,7 +159,7 @@ const Navbar = () => {
             <li className="">
               <NavLink
                 to="/manageMyPost"
-                className="isActive btn btn-outline btn-sm btn-primary"
+                className="isActive btn btn-outline btn-sm btn-secondary my-btn"
               >
                 Manage My Post
               </NavLink>
@@ -171,12 +171,12 @@ const Navbar = () => {
         <div className=" mr-2">
           <button
             onClick={toggleTheme}
-            className="btn btn-outline btn-sm btn-primary"
+            className="btn btn-outline btn-sm btn-secondary "
           >
             Switch to {theme === "light" ? "Dark" : "Light"}
           </button>
         </div>
-        {userData?.photo && (
+        {/* {userData?.photo && (
           <div className=" rounded-full w-10   bg-gray-300 mr-4">
             <a
               data-tooltip-id="my-tooltip-styles"
@@ -190,25 +190,25 @@ const Navbar = () => {
             </a>
             <Tooltip id="my-tooltip-styles" className="example" />
           </div>
-        )}
+        )} */}
 
         {user?.email ? (
           <div>
             <NavLink
               onClick={handleLogOut}
-              className="btn btn-outline btn-sm btn-primary"
+              className="btn btn-outline btn-sm btn-secondary my-btn"
             >
               Logout
             </NavLink>
           </div>
         ) : (
           <div className="flex">
-            <NavLink to="/login" className="btn btn-outline btn-sm btn-primary">
+            <NavLink to="/login" className="btn btn-outline btn-sm btn-secondary my-btn">
               Login
             </NavLink>
             <NavLink
               to="/register"
-              className="btn ml-2 btn-outline btn-sm btn-primary"
+              className="btn ml-2 btn-outline btn-sm btn-secondary my-btn"
             >
               Register
             </NavLink>

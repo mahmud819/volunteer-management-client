@@ -64,7 +64,7 @@ import PopularOrg from "../PopularOrg/PopularOrg.jsx";
           path: '/updateMyPost/:id',
           element: <PrivateRouter><UpdateMyPost></UpdateMyPost></PrivateRouter>,
           loader: ({ params }) =>
-            fetch(`https://volunteer-website-server-mu.vercel.app/addVolunteers/${params.id}`),
+            fetch(`http://localhost:3000/addVolunteers/${params.id}`),
         },
         
         {
@@ -74,7 +74,7 @@ import PopularOrg from "../PopularOrg/PopularOrg.jsx";
           </PrivateRouter> ,
           loader: async ({ params }) => {
             const res = await fetch(
-              "https://volunteer-website-server-mu.vercel.app/addVolunteers"
+              "http://localhost:3000/addVolunteers"
             );
             const data = await res.json();
             const singleData = data.find((d) => d._id == params._id);
@@ -86,7 +86,7 @@ import PopularOrg from "../PopularOrg/PopularOrg.jsx";
           element: <PrivateRouter><BeAVolunteer></BeAVolunteer></PrivateRouter>,
           loader: async ({ params }) => {
             const res = await fetch(
-              "https://volunteer-website-server-mu.vercel.app/addVolunteers"
+              "http://localhost:3000/addVolunteers"
             );
             const data = await res.json();
             const singleData = data.find((d) => d._id == params._id);

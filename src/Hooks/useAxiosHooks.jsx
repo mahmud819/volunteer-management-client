@@ -2,8 +2,8 @@ import axios from "axios";
 
 const axiosInstance = axios.create({
   baseURL:
-    "https://volunteer-website-server-mu.vercel.app",
-  // baseURL: 'https://volunteer-website-server-mu.vercel.app',
+    "http://localhost:3000",
+  // baseURL: 'http://localhost:3000',
   // withCredentials : true,
 });
 const useAxiosHooks = () => {

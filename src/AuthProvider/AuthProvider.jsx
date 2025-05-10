@@ -43,14 +43,14 @@ const AuthProvider = ({children}) => {
             
             if(currentUser?.email){
                 const user = {email : currentUser.email};
-                axios.post('https://volunteer-website-server-mu.vercel.app/jwt',user,{withCredentials:true})
+                axios.post('http://localhost:3000/jwt',user,{withCredentials:true})
                 .then(res=>{
                     // console.log(res);
                     setLoading(false);
                 })
             }
             else{
-                axios.post('https://volunteer-website-server-mu.vercel.app/logOut',{},{withCredentials:true})
+                axios.post('http://localhost:3000/logOut',{},{withCredentials:true})
                 .then(res=>{
                     // console.log('log out token',res.data);
                     setLoading(false);
