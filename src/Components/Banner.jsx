@@ -7,7 +7,7 @@ const Banner = () => {
       <div className=" carousel w-full">
         <div id="slide1" className="carousel-item relative mx-auto  w-[100%]">
           <img
-            src="https://i.ibb.co/yWzGXHK/safe-Heaven.jpg"
+            src="https://i.ibb.co.com/Pz0hFPvV/cleaning.jpg"
             className=" w-[90%] h-[90%] mx-auto "
           />
           <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
@@ -21,7 +21,7 @@ const Banner = () => {
         </div>
         <div id="slide2" className="carousel-item relative w-full">
           <img
-            src="https://i.ibb.co/tmDG2tT/cover-peace-for-nature-thumbnail-400x250.webp"
+            src="https://i.ibb.co.com/Vncjnxp/food.jpg"
             className="w-[90%] h-[90%] mx-auto"
           />
           <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
@@ -35,7 +35,7 @@ const Banner = () => {
         </div>
         <div id="slide3" className="carousel-item relative w-full">
           <img
-            src="https://i.ibb.co/MgZ2ksh/banner-01.jpg"
+            src="https://i.ibb.co.com/spp98Q34/dpmatopm.jpg"
             className="w-[90%] h-[90%] mx-auto"
           />
           <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
@@ -49,7 +49,7 @@ const Banner = () => {
         </div>
         <div id="slide4" className="carousel-item relative w-full">
           <img
-            src="https://i.ibb.co/xH5PyqX/save-child.jpg"
+            src="https://i.ibb.co.com/Zz5J1XsB/fooddonation.jpg"
             className="w-[90%] h-[90%] mx-auto"
           />
           <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
