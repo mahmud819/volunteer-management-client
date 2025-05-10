@@ -58,7 +58,7 @@ const MyRequestPost = () => {
   return (
     <div>
       <h1 className="text-2xl font-bold text-center text-white">My Requested Post : {requestedData?.length}</h1>
-      <div className="text-white">
+      <div className="">
         {requestedData?.length == 0 ? (
           <div className="flex justify-center items-center min-h-screen">
             <h1 className="text-4xl font-bold text-center my-4">

@@ -9,7 +9,7 @@ const MainLayOut = () => {
         // <div className='bg-gradient-to-r from-[#341f78] via-[#741f78] to-[#441f78] '>
         <div >
             <Header></Header>
-            <div className='px-8 pt-20 lg:pb-4'>
+            <div className='px-2 pt-20 lg:pb-4 lg:px-8'>
             <Outlet></Outlet>
             </div>
             

@@ -13,11 +13,11 @@ const VolunteersCard = ({ data }) => {
     category,
   } = data;
   return (
-    <div className="flex gap-2 my-2 p-2 rounded-lg bg-base-300 w-[80%] shadow-xl">
-      <figure className="w-[40%]">
-        <img className="mx-auto w-[60%] p-2 rounded-xl" src={thumbnail} alt="photo" />
+    <div className="w-[100%] flex flex-col gap-2 my-2  rounded-lg bg-base-300 shadow-xl lg:flex-row lg:p-2 lg:w-[80%] ">
+      <figure className="w-[100%] lg:w-[40%]">
+        <img className="w-[100%] p-2 mx-auto rounded-xl lg:w-[60%] lg:p-2" src={thumbnail} alt="photo" />
       </figure>
-      <div className="w-[60%] flex flex-col justify-center items-center p-2">
+      <div className="w-[60%] mx-auto flex flex-col justify-center items-center p-2 ">
         <h2 className="font-bold text-xl mb-2">{title} </h2>
         <p className="text-sm mb-2">{description}</p>
         <p className="text-sm mb-2 ">Apply Deadline : {deadline}</p>
@@ -25,7 +25,7 @@ const VolunteersCard = ({ data }) => {
           <p className="text-md font-bold">Total Volunteers Need : {volunteerNumber}</p>
         </div>
         <h1 className="py-2">Category : {category}</h1>
-        <div className=" card-actions justify-end">
+        <div className="flex justify-center card-actions justify-end">
           <NavLink to={`/postDetails/${_id}`} className="btn btn-primary">
             Post Details
           </NavLink>

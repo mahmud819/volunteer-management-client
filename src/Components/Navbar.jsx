@@ -66,7 +66,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 to="/"
-                className="active btn btn-outline btn-sm btn-secondary my-btn"
+                className="active btn btn-outline btn-sm"
               >
                 Home
               </NavLink>
@@ -123,14 +123,14 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 gap-x-2">
           <li className="">
-            <NavLink to="/" className="btn btn-outline  btn-sm   btn-secondary my-btn">
+            <NavLink to="/" className="btn btn-outline  btn-sm">
               Home
             </NavLink>
           </li>
           <li className="">
             <NavLink
               to="/allVolunteer"
-              className="isActive btn btn-outline btn-sm my-btn btn-secondary"
+              className="isActive btn btn-outline btn-sm my-btn "
             >
               All Volunteer
             </NavLink>
@@ -139,7 +139,7 @@ const Navbar = () => {
             <li className="">
               <NavLink
                 to="/myProfile"
-                className="isActive btn btn-outline btn-sm btn-secondary my-btn"
+                className="isActive btn btn-outline btn-sm my-btn"
               >
                 My Profile
               </NavLink>
@@ -149,7 +149,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 to="/addVolunteer"
-                className="isActive btn btn-outline btn-sm btn-secondary my-btn"
+                className="isActive btn btn-outline btn-sm my-btn"
               >
                 Add Volunteer
               </NavLink>
@@ -159,7 +159,7 @@ const Navbar = () => {
             <li className="">
               <NavLink
                 to="/manageMyPost"
-                className="isActive btn btn-outline btn-sm btn-secondary my-btn"
+                className="isActive btn btn-outline btn-sm my-btn"
               >
                 Manage My Post
               </NavLink>
@@ -171,7 +171,7 @@ const Navbar = () => {
         <div className=" mr-2">
           <button
             onClick={toggleTheme}
-            className="btn btn-outline btn-sm btn-secondary "
+            className="btn btn-outline btn-sm  "
           >
             Switch to {theme === "light" ? "Dark" : "Light"}
           </button>
@@ -196,19 +196,19 @@ const Navbar = () => {
           <div>
             <NavLink
               onClick={handleLogOut}
-              className="btn btn-outline btn-sm btn-secondary my-btn"
+              className="btn btn-outline btn-sm my-btn"
             >
               Logout
             </NavLink>
           </div>
         ) : (
           <div className="flex">
-            <NavLink to="/login" className="btn btn-outline btn-sm btn-secondary my-btn">
+            <NavLink to="/login" className="btn btn-outline btn-sm  my-btn">
               Login
             </NavLink>
             <NavLink
               to="/register"
-              className="btn ml-2 btn-outline btn-sm btn-secondary my-btn"
+              className="btn ml-2 btn-outline btn-sm  my-btn"
             >
               Register
             </NavLink>
