@@ -5,11 +5,21 @@ import PopularOrg from "../PopularOrg/PopularOrg";
 import Support from "../Support/Support";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import * as motion from "motion/react-client"
 
 const Home = () => {
   return (
-    <div className="mx-auto2">
-      <Banner></Banner>
+    <div  className="mx-auto2">
+      <motion.div  initial={{ opacity: 0, scale: 0.7 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{
+        duration: 2.8,
+        delay: 0.3,
+        ease: [0, 0.71, 0.2, 1.01],
+    }}  >
+        <Banner></Banner>
+      </motion.div>
+     
 
       {/* <div className="mx-auto mt-4">
         <div role="tablist" className="tabs tabs-bordered mx-auto ">

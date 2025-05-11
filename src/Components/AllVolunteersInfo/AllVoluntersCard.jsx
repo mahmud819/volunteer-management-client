@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import * as motion from "motion/react-client"
 
 const AllVoluntersCard = ({data}) => {
   
@@ -7,7 +8,8 @@ const AllVoluntersCard = ({data}) => {
     title,name,description,deadline,thumbnail,_id,volunteerNumber,category,} = data;
     // console.log(data,title);
   return (
-    <div className="p-4 rounded-lg card-compact bg-base-100 w-[100%] shadow-xl">
+    <motion.div whileHover={{ scale: 1.1 }}
+    whileTap={{ scale: 0.2 }} className="p-4 rounded-lg card-compact bg-base-100 w-[100%] shadow-xl">
       <figure>
         <img className="rounded-lg"
           src={thumbnail}
@@ -29,7 +31,7 @@ const AllVoluntersCard = ({data}) => {
           <NavLink to={`/postDetails/${_id}`} className="btn btn-primary">View Details</NavLink>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

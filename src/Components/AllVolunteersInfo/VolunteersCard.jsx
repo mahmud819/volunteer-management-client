@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import * as motion from "motion/react-client"
 
 const VolunteersCard = ({ data }) => {
   // console.log(data);
@@ -13,7 +14,8 @@ const VolunteersCard = ({ data }) => {
     category,
   } = data;
   return (
-    <div className="w-[100%] flex flex-col gap-2 my-2  rounded-lg bg-base-300 shadow-xl lg:flex-row lg:p-2 lg:w-[80%] ">
+    <motion.div whileHover={{ scale: 1.1 }}
+    whileTap={{ scale: 0.2 }} className="w-[100%] flex flex-col gap-2 my-2  rounded-lg bg-base-300 shadow-xl lg:flex-row lg:p-2 lg:w-[80%] ">
       <figure className="w-[100%] lg:w-[40%]">
         <img className="w-[100%] p-2 mx-auto rounded-xl lg:w-[60%] lg:p-2" src={thumbnail} alt="photo" />
       </figure>
@@ -31,8 +33,9 @@ const VolunteersCard = ({ data }) => {
           </NavLink>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
+ 
 
 export default VolunteersCard;

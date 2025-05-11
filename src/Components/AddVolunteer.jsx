@@ -29,7 +29,7 @@ const AddVolunteer = () => {
 
         const data = {name,email,thumbnail,title,volunteerNumber,category,description,deadline}
         // console.log(data);
-        // axios.post('http://localhost:5000/addedJobs',data,{withCredentials:true})
+        // axios.post('https://volunteer-website-server-mu.vercel.app/addedJobs',data,{withCredentials:true})
         axiosHook.post('/addVolunteers',data)
         .then(res=>{
             // console.log(res);

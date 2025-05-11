@@ -1,9 +1,10 @@
 import React from "react";
 import { easeOut, motion } from "motion/react";
 
+
 const Banner = () => {
   return (
-    <div>
+    <div >
       <div className=" carousel w-full">
         <div id="slide1" className="carousel-item relative mx-auto  w-[100%]">
           <img

@@ -1,12 +1,14 @@
 import React from 'react';
-
+import * as motion from "motion/react-client"
 const PopularOrgCard = ({data}) => {
     const{organization_name,organization_logo,working_country
 , working_type,established_year} = data;
     // console.log(data)
     return (
         
-        <div className="p-4 rounded-lg card-compact bg-base-100 w-[100%] shadow-xl">
+        <motion.div whileHover={{ scale: 1.2 }}
+        whileTap={{ scale: 0.8 }}
+         className="p-4 rounded-lg card-compact bg-base-100 w-[100%] shadow-xl">
               <figure>
                 <img className="rounded-lg"
                   src={organization_logo}
@@ -26,7 +28,7 @@ const PopularOrgCard = ({data}) => {
                 
             
                 </div>
-              </div>
+              </motion.div>
             
     )
 };

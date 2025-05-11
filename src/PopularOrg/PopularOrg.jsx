@@ -9,7 +9,7 @@ const PopularOrg = () => {
     const [orgData,setOrgData] = useState();
     useEffect(()=>{
         setLoading(true)
-        axios.get('http://localhost:3000/volunteerOrg')
+        axios.get('https://volunteer-website-server-mu.vercel.app/volunteerOrg')
         .then(res=>{
             console.log(res.data);
             setOrgData(res.data);

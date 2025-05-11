@@ -43,7 +43,7 @@ const Navbar = () => {
     <div className="navbar fixed top-0 z-20 backdrop-blur-lg border border-white/30 bg-[rgb(19, 15, 64)] px-8">
       <div className="navbar-start text-white">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+          <div tabIndex={0} role="button" className="flex btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -58,6 +58,7 @@ const Navbar = () => {
                 d="M4 6h16M4 12h8m-8 6h16"
               />
             </svg>
+            <h1 className="text-lg text-white bg-red-300">Volunteer Hub</h1>
           </div>
           <ul
             tabIndex={0}

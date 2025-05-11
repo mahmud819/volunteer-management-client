@@ -12,7 +12,7 @@ const MyRequestPost = () => {
   useEffect(() => {
     
     axiosHook
-      .get("http://localhost:3000/beAVolunteer")
+      .get("https://volunteer-website-server-mu.vercel.app/beAVolunteer")
       .then((res) => {
         // console.log(res.data);
         setRequestedData(res.data);
